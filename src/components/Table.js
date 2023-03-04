@@ -1,60 +1,55 @@
-import React, { useState } from "react";
+import React from "react";
+import TableBody from "./TableBody";
 
+export default function Table({type, date,item,amount}) {
+  // const [type, setType] = useState("");
+  // const [item, setItem] = useState("");
+  // const [date, setDate] = useState(new Date());
+  // const [amount, setAmount] = useState("");
+  
+ 
+  // const handleOnDateChange = (e) => {
+  //   setDate(date,2023/2/28);
 
-export default function Table(props) {
-  const [type, setType] = useState('');
-  const [item, setItem] = useState('');
-  const [date, setDate] = useState('');
-  const [amount, setAmount] = useState('');
+  // };
 
-
-
-  const handleDeleteOnClick = (e) => {
-       
-  };
-  const handleOnDateChange = () => {
-    setDate(new Date(2023/2/13));
-  };
-
-  const handleOnChange = (e) => {
-    setType(type,e.target.value);
-    setItem(item,e.target.value);
-    setAmount(amount,e.target.value);
-  };
+  // const handleOnChange = (e) => {
+  //   setType(type, e.target.value);
+  //   setItem(item, e.target.value);
+  //   setAmount(amount, e.target.value);
+    
+  // };
 
   return (
-    <div className= "table">
-      <table>
-        <thead className="table table-striped">
+    <div>
+      <table className="table table-striped">
+        <thead>
           <tr>
-            <th className="odd" 
-            onChange={handleOnChange} 
-            value={type}>
+            <th className="odd" //onChange={handleOnChange} 
+            
+            value={type}
+            >
               Type
             </th>
-            <th className="even" 
-            onClick={handleOnDateChange}
-            value={date} >
+            <th className="even" //onChange={handleOnDateChange} 
+            value={date}>
               Date
             </th>
-            <th className="odd" 
-            onChange={handleOnChange} 
+            <th className="odd" //onChange={handleOnChange} 
             value={item}>
               Item
             </th>
-            <th className="even" 
-            onChange={handleOnChange}
-            value={amount}>
+            <th className="even" //
+            //onChange={handleOnChange}
+             value={amount} >   
               Amount
             </th>
-            <button  
-            onClick={handleDeleteOnClick}>
-              <i className="fa-thin fa-trash-can">X</i>
-              </button>
-             
           </tr>
         </thead>
+      
       </table>
+
+      <TableBody/> 
     </div>
   );
 }

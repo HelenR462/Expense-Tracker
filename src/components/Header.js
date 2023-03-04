@@ -1,17 +1,10 @@
-import React, { useState } from "react";
-import MainButton from "./MainButton";
+import React from "react";
 
-export default function Header() {
-  const [total, setTotal] = useState(0);
-
-  const handleOnClick = (e) => {
-    setTotal(total, e.target.value);
-  };
-
+export default function Header({ totalExpense }) {
   return (
-    <div className="header-section">
+    <header className="header-section">
       <h1>Expense Tracker</h1>
-      <h3 onClick={handleOnClick}>Total $:{total}</h3>
-    </div>
+      <h3 type="number">Total: $ {totalExpense}</h3>
+    </header>
   );
 }
