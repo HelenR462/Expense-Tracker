@@ -1,28 +1,32 @@
-import React, {useState} from "react";
-
+import React, { useState } from "react";
 
 export default function MainButton(props) {
-  
   const [type, setType] = useState("");
   const [item, setItem] = useState("");
   const [amount, setAmount] = useState("");
-const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date());
 
-
-    const handleOnChange = (e) => {
-      setType(type, e.target.value);
-    setItem(item, e.target.value);
-  setAmount(amount, e.target.value);
+  const handleTypeOnChange = (e) => {
+    setType(type, e.target.value);
   };
 
-   
-  const handleDateOnSelect = () => {
+  const handleDateOnChange = (e) => {
     setDate(date, new Date(2023 / 2 / 7));
   };
 
-   const handleOnSubmit = (e) => {
-      //  e.preventDefault();
-   };
+  const handleItemOnChange = (e) => {
+    setItem(item, e.target.value);
+  };
+
+  const handleAmountOnChange = (e) => {
+    setAmount(amount, e.target.value);
+
+    //  console.log(e);
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div>
@@ -30,7 +34,7 @@ const [date, setDate] = useState(new Date());
         <label className="top-row payment">
           <span>Type:</span>
           <select
-            onChange={handleOnChange}
+            onChange={handleTypeOnChange}
             className="type"
             value={props.type}
           >
@@ -48,9 +52,8 @@ const [date, setDate] = useState(new Date());
           <span> Item:</span>
           <input
             className="form-control"
-            onChange={handleOnChange}
+            onChange={handleItemOnChange}
             value={props.item}
-            // value="item"
             type="text"
             placeholder="Description"
             aria-label="item"
@@ -60,7 +63,7 @@ const [date, setDate] = useState(new Date());
         <label className=" btm-row">
           <span>Date:</span>
           <input
-            onSelect={handleDateOnSelect}
+            onSelect={handleDateOnChange}
             // onChange={handleDateOnChange}
             type="date"
             value={props.date}
@@ -71,7 +74,7 @@ const [date, setDate] = useState(new Date());
         <label className="btm-row">
           <span>Amount:</span>
           <input
-            onChange={handleOnChange}
+            onChange={handleAmountOnChange}
             className="form-control"
             value={props.amount}
             type="number"
@@ -87,7 +90,7 @@ const [date, setDate] = useState(new Date());
           <button
             className="btn btn-primary btn-lg"
             type="Submit"
-             onClick={handleOnSubmit}
+            onClick={handleOnSubmit}
           >
             Add Expense
           </button>

@@ -6,7 +6,6 @@ import Table from "./components/Table";
 import TableBody from "./components/TableBody";
 
 export default function App() {
-  const [totalExpense, setTotalExpense] = useState(0);
   const [expense, setExpense] = useState([
     {
       id: 1,
@@ -29,31 +28,23 @@ export default function App() {
     setExpense(expense, e.target.value);
   };
 
-  const handleOnClick = (e) => {
-    setTotalExpense(expense + totalExpense);
-  };
-
   return (
     <div>
-      <Header
-        totalExpense={totalExpense}
-        onChange={handleOnChange}
-        onClick={handleOnClick}
-      />
-      <MainButton
-        amount={expense.amount}
-        onChange={handleOnChange}
-        onClick={handleOnClick}
-      />
+      <Header amount={expense.amount} onChange={handleOnChange} />
+      <MainButton amount={expense.amount} onChange={handleOnChange} />
       <Table />
       <TableBody
-        type={expense.type}
-        date={expense.date}
-        item={expense.item}
-        amount={expense.amount}
+        type={expense[0].type}
+        date={expense[0].date}
+        item={expense[0].item}
+        amount={expense[0].amount}
       />
-     
+      <TableBody
+        type={expense[1].type}
+        date={expense[1].date}
+        item={expense[1].item}
+        amount={expense[1].amount}
+      />
     </div>
   );
 }
-

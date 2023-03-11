@@ -1,17 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 
-function TableBody({expense}) {
+function TableBody(props) {
+  const [expense, setExpense] = useState("");
+
+  const handleOnChange = (e) => {
+    setExpense(expense, e.target.value);
+  };
+
+  // const handleOnClick = (e) => {
+
+  // }
+  //
+
   return (
-    <TableBody>
-      <tbody>
+    <div>
+      <tbody
+        className="table table-striped"
+        value={expense}
+        onChange={handleOnChange}
+      >
         <tr>
-          <td>{expense.type}</td>
-          <td>{expense.date}</td>
-          <td>{expense.item}</td>
-          <td>{expense.amount}</td>
+          <td>{props.type}</td>
+          <td>{props.date}</td>
+          <td>{props.item}</td>
+          <td>{props.amount}</td>
         </tr>
       </tbody>
-    </TableBody>
+
+      {/* <button type="delete" onClick={handleOnClick}>
+        <i className="fa fa-trash" aria-hidden="true"></i>
+      </button> 
+
+     */}
+    </div>
   );
 }
 

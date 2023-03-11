@@ -113,13 +113,13 @@ input{
 
 
 /* TABLE */
-/* 
-.table{
+
+/* .table table-striped{
   background-color:rgb(187, 210, 220);
   
 }
 
-th{
+tr{
    margin-left:170px;
    font-size: x-large;
    display:inline-flex;
@@ -128,12 +128,12 @@ th{
    color:#555454;
      
 } */
+
 /* 
-.fa-trash-can{
-  margin-right:5px; 
-  background-color:white;
-  font-size: large;
-  font-weight: 800;
-  color: red;
+ .fa fa-trash{
+  border-color: transparent;
+  border:transparent 0px solid;
+  
   
 } */
+
