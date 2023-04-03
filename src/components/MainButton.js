@@ -1,32 +1,55 @@
 import React, { useState } from "react";
 
 export default function MainButton(props) {
+  
   const [type, setType] = useState("");
   const [item, setItem] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState(new Date());
+  
 
   const handleTypeOnChange = (e) => {
     setType(type, e.target.value);
+    console.log(e.target.value);
   };
 
   const handleDateOnChange = (e) => {
-    setDate(date, new Date(2023 / 2 / 7));
+    setDate( new Date(2023 / 2 / 7));
+
+    console.log(e.target.value);
   };
 
   const handleItemOnChange = (e) => {
     setItem(item, e.target.value);
+
+    console.log(e.target.value);
   };
 
   const handleAmountOnChange = (e) => {
     setAmount(amount, e.target.value);
+    console.log(e.target.value);
+  };
 
-    //  console.log(e);
+  const handleOnClick = (e) => {
+    
+  
+    console.log("Submited");
   };
 
   const handleOnSubmit = (e) => {
-    e.preventDefault();
+   e.preventDefault()
+
+
+  const expenseItems = {
+   payment: {type},
+   date: {new :Date(date)},
+    name: {item},
+   price: {amount}
   };
+
+  console.log(expenseItems)
+  }
+
 
   return (
     <div>
@@ -36,9 +59,9 @@ export default function MainButton(props) {
           <select
             onChange={handleTypeOnChange}
             className="type"
-            value={props.type}
-          >
-            <option>Payment</option>
+            value={props.type}>
+            
+           <option>Payment</option>           
             <option value="cash">Cash</option>
             <option value="debit">Debit</option>
             <option value="credit card">Credit Card</option>
@@ -53,8 +76,8 @@ export default function MainButton(props) {
           <input
             className="form-control"
             onChange={handleItemOnChange}
+            name="name"
             value={props.item}
-            type="text"
             placeholder="Description"
             aria-label="item"
           />
@@ -63,8 +86,8 @@ export default function MainButton(props) {
         <label className=" btm-row">
           <span>Date:</span>
           <input
-            onSelect={handleDateOnChange}
-            // onChange={handleDateOnChange}
+            //  onSelect={handleOnChange}
+            onChange={handleDateOnChange}
             type="date"
             value={props.date}
           />
@@ -76,6 +99,7 @@ export default function MainButton(props) {
           <input
             onChange={handleAmountOnChange}
             className="form-control"
+            name="price"
             value={props.amount}
             type="number"
             min="1.00"
@@ -85,12 +109,13 @@ export default function MainButton(props) {
           />
         </label>
 
+
         {/* Button */}
         <div className="btn-container">
           <button
             className="btn btn-primary btn-lg"
             type="Submit"
-            onClick={handleOnSubmit}
+            onClick={handleOnClick}
           >
             Add Expense
           </button>
@@ -98,4 +123,6 @@ export default function MainButton(props) {
       </form>
     </div>
   );
-}
+
+  }
+

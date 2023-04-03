@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 
-export default function Header() {
+export default function Header(props) {
+  
   const [amount, setAmount] = useState(0);
+  //  const [totalAmount, setTotalAmount] =useState() 
+  
+ 
+  const handleAmountOnChange = (e) => {
+       setAmount(amount, amount + e.target.value);
+    console.log(e.target.value)
+    };
 
-  function handleOnChange(e) {
-    setAmount(amount + { amount });
-
-    console.log(amount);
-  }
-
-  return (
-    <header className="header-section">
+    return (
+    <header className="header-section"> 
       <h1>Expense Tracker</h1>
-      <h3 onChange={handleOnChange}>Total: $ {amount}</h3>
+      <h3
+       type="number" 
+      value={props.amount} 
+        onChange={handleAmountOnChange}
+      >
+        Total: ${amount}
+      </h3>
     </header>
   );
 }
