@@ -114,7 +114,7 @@ input{
 
 /* TABLE */
 
- .table table-striped{
+ /* .table table-striped{
   background-color:rgb(187, 210, 220);
   
 }
@@ -129,11 +129,11 @@ tr{
      
 } 
 
-/* 
+
  .fa fa-trash{
   border-color: transparent;
   border:transparent 0px solid;
-  
+  display: flex;
   
 } */
 

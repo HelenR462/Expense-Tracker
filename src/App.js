@@ -22,63 +22,50 @@ export default function App() {
       item: "Hand Bag",
       amount: "170.00",
     },
-
-    {
-      id: 2,
-      type: "cheque",
-      date: "2023/2/20",
-      item: "bill",
-      amount: "193.00",
-    },
-  ]);
-
- 
-  const handleOnChange = (e) => {
-    setExpense(expense,e.target.value);
+])
 
 
-  const expenseItems = [];
-  for (let i = 0; i < expense.length; i++) {
+const expenseItems = [];
+for (let i = 0; i < expense.length; i++) {
     const expenseObject = expense[i];
-    // add table body to expenseItems array
-    
+  // add table body to expenseItems array
 
-    expenseItems.push( 
-   
-          
-       <TableBody
-          key={expenseObject.id}
-         type={expenseObject.type}
-        date ={expenseObject.date}
-        item ={expenseObject.item}
-         amount={expenseObject.amount}
-         />
-     )
-
-    }
-       
-
-   
- 
-    };
+  expenseItems.push(
+  //   <li>
+  // {expenseObject}: {expenseItems[expenseObject]}
+  // </li>
   
-    
-    return (
-      <div>
-        <Header
-          
-        />
-        <MainButton
+      <TableBody
+          id={expenseObject.id}
+           item= {expenseObject.item}
+          type={expenseObject.type}
+          date={expenseObject.date}
+          amount={expenseObject.amount}
+      />
+  
+   )
+}
 
-         onChange={handleOnChange}
-        />
-        <Table />
-        <TableBody 
-        
-       
-        />
-        {/* {expenseItems} */}
-      
-      </div>
-    );
+const handleOnSubmit=()=>{
+  setExpense(expense => [...expense,expenseItems] );
+}
+
+
+
+
+     return (
+    <div>
+      <Header amount={setExpense.amount}/>
+      <MainButton />
+      <Table />
+      <TableBody key={expense.id}
+       onSubmit={handleOnSubmit}
+      setExpense={setExpense}
+    
+          /> 
+   
+      {expenseItems}  
+    </div>
+  );
   }
+  
