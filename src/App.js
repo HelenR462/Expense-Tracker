@@ -6,7 +6,7 @@ import Table from "./components/Table";
 import TableBody from "./components/TableBody";
 
 export default function App() {
-  const [expense, setExpense] = useState([
+  const [expenses, setExpenses] = useState([
     {
       id: 0,
       type: "Cash",
@@ -22,50 +22,50 @@ export default function App() {
       item: "Hand Bag",
       amount: "170.00",
     },
-])
+  ]);
 
+  // const expenseItems = [];
+  // for (let i = 0; i < expenses.length; i++) {
+  //   const expenseObject = expenses[i];
+  //   // add table body to expenseItems array
 
-const expenseItems = [];
-for (let i = 0; i < expense.length; i++) {
-    const expenseObject = expense[i];
-  // add table body to expenseItems array
+  //   expenseItems.push(
+  //     <TableBody
+  //       id={expenseObject.id}
+  //       item={expenseObject.item}
+  //       type={expenseObject.type}
+  //       date={expenseObject.date}
+  //       amount={expenseObject.amount}
+  //     />
+  //   );
+  // }
 
-  expenseItems.push(
-  //   <li>
-  // {expenseObject}: {expenseItems[expenseObject]}
-  // </li>
-  
-      <TableBody
-          id={expenseObject.id}
-           item= {expenseObject.item}
-          type={expenseObject.type}
-          date={expenseObject.date}
-          amount={expenseObject.amount}
-      />
-  
-   )
-}
+  const addNewExpense = (type, date, item, amount) => {
+    const newExpense = {
+      
+      id: Math.random(),
+      type: type,
+      date: date.toLocaleString(),
+      item: item,
+      amount:amount
+   };
+    setExpenses([...expenses, newExpense]);
+  };
 
-const handleOnSubmit=()=>{
-  setExpense(expense => [...expense,expenseItems] );
-}
-
-
-
-
-     return (
+  return (
     <div>
-      <Header amount={setExpense.amount}/>
-      <MainButton />
+      <Header amount={addNewExpense.amount}/>
+      < MainButton addNewExpense={addNewExpense}   />
       <Table />
-      <TableBody key={expense.id}
-       onSubmit={handleOnSubmit}
-      setExpense={setExpense}
-    
-          /> 
-   
-      {expenseItems}  
+      <TableBody
+         onSubmit={addNewExpense}
+      //  onClick={handleOnDelete}
+       setExpenses={setExpenses}
+        expenses={expenses}
+
+      />
+
+      {/* {expenseItems} */}
     </div>
   );
-  }
-  
+}

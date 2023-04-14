@@ -1,36 +1,52 @@
 import React, { useState } from "react";
 
 export default function TableBody(props) {
-  const [data, setData] = useState("");
+  // console.log("props", props);
+  const [data, setData] = useState();
 
   const handleOnChange = (e) => {
+    // console.log(data)
     setData(data, e.target.value);
   };
 
-  // const handleOnClick = (e) => {};
+   const handleOnDelete =(id) => {
+   
+    
+  //     setData(data.id !== data);
+
+  //   // setData(deleteData);
+  //   // console.log(data);
+   };
+
+  const expenseItems = [];
+  for (let i = 0; i < props.expenses.length; i++) {
+    const expenseObject = props.expenses[i];
+    // add table body to expenseItems array
+
+    expenseItems.push(
+      <tr key={expenseItems}>
+        <td>{expenseObject.type}</td>
+        <td>{expenseObject.date}</td>
+        <td>{expenseObject.item}</td>
+        <td>{expenseObject.amount}</td>
+        <td>
+          <button type="delete" 
+           onClick={handleOnDelete(expenseObject.id)}
+          >
+            <i className="fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </td>
+      </tr>
+    );
+  }
 
   return (
-    // <tbody
     <table
       className="table table-striped"
-      value={props.data}
+      value={data}
       onChange={handleOnChange}
     >
-      <tbody>
-        <tr>
-          <td>{props.type}</td>
-          <td>{props.date}</td>
-          <td>{props.item}</td>
-          <td>{props.amount}</td>
-        </tr>
-      </tbody>
-
-      {/* <div> 
-       <button type="delete" onClick={handleOnClick}>
-        <i className="fa fa-trash" aria-hidden="true"></i>
-         </button>  
-       </div>  */}
-      {/* </tbody> */}
+      <tbody>{expenseItems}</tbody>
     </table>
   );
 }

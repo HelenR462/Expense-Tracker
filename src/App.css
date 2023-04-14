@@ -114,26 +114,22 @@ input{
 
 /* TABLE */
 
- /* .table table-striped{
-  background-color:rgb(187, 210, 220);
+  .table {
+  background-color:rgb(224, 234, 238);
   
 }
 
-tr{
-   margin-left:170px;
-   font-size: x-large;
-   display:inline-flex;
-   font-weight: 200;
-   padding:15px;
-   color:#555454;
-     
-} 
-
-
- .fa fa-trash{
-  border-color: transparent;
-  border:transparent 0px solid;
-  display: flex;
+.table table-striped{
+  background-color:rgb(42, 96, 42)(187, 210, 220);
   
-} */
+}
+
+
+
+  .fa fa-trash{
+  border-color: transparent;
+  color:transparent 0px solid;
+  display: flex-end;
+  margin-left: 80%;
+} 
 

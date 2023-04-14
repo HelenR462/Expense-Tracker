@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import TableBody from "./TableBody";
 
-export default function MainButton({setExpense}) {
+export default function MainButton({ setExpenses, addNewExpense }) {
   const [type, setType] = useState("");
+  const [date, setDate] = useState(new Date());
   const [item, setItem] = useState("");
   const [amount, setAmount] = useState("");
-  const [date, setDate] = useState(new Date());
 
   const handleTypeOnChange = (e) => {
     setType(type, e.target.value);
@@ -14,7 +13,7 @@ export default function MainButton({setExpense}) {
   };
 
   const handleDateOnChange = (e) => {
-    setDate(date, new Date(2023 / 2 / 7));
+    setDate({ date: new Date() });
 
     console.log(e.target.value);
   };
@@ -31,33 +30,20 @@ export default function MainButton({setExpense}) {
     console.log(e.target.value);
   };
 
-  const handleOnSubmit = (e) => {
+  function handleOnSubmit(e) {
     e.preventDefault();
-
-    // setExpense({
-    //   type:{type},
-    //   date:{date},
-    // item: {item},
-    //   price:{amount}
-    //  } )
-    //  setExpense(e.target.value)
-    setAmount((previous) => previous + amount);
-
-    console.log("Submitted");
-  
+    addNewExpense(type, date, item, amount);
   }
-    
+  //  addNewExpense =(e)=> {
+  //      setExpenses(e.target.value)
+  //     };
 
   return (
     <div>
       <form onSubmit={handleOnSubmit}>
         <label className="top-row payment">
           <span>Type:</span>
-          <select
-            onChange={handleTypeOnChange}
-            className="type"
-             value={setExpense}
-          >
+          <select onChange={handleTypeOnChange} className="type">
             <option>Payment</option>
             <option value="cash">Cash</option>
             <option value="debit">Debit</option>
@@ -74,7 +60,6 @@ export default function MainButton({setExpense}) {
             className="form-control"
             onChange={handleItemOnChange}
             name="name"
-             value={setExpense}
             placeholder="Description"
             aria-label="item"
           />
@@ -82,12 +67,7 @@ export default function MainButton({setExpense}) {
         {/* Date */}
         <label className=" btm-row">
           <span>Date:</span>
-          <input
-            //  onSelect={handleOnChange}
-            onChange={handleDateOnChange}
-            type="date"
-            value={setExpense}
-          />
+          <input onChange={handleDateOnChange} type="date" />
         </label>
 
         {/*Amount */}
@@ -97,7 +77,6 @@ export default function MainButton({setExpense}) {
             onChange={handleAmountOnChange}
             className="form-control"
             name="price"
-            value={setExpense}
             type="number"
             min="1.00"
             step="0.050"
@@ -105,23 +84,14 @@ export default function MainButton({setExpense}) {
             aria-label="Amount"
           />
         </label>
+
         {/* Button */}
         <div className="btn-container">
-          <button
-            className="btn btn-primary btn-lg"
-            type="Submit"
-            // onClick={handleOnClick}
-          >
+          <button className="btn btn-primary btn-lg" type="Submit" onSubmit={handleOnSubmit}>
             Add Expense
           </button>
         </div>
       </form>
- 
-    <TableBody
-         />
-      {/* <tr> */}
-    
-      {/* </tr> */}
     </div>
   );
 }
