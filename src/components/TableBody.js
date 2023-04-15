@@ -1,22 +1,19 @@
 import React, { useState } from "react";
 
 export default function TableBody(props) {
-  // console.log("props", props);
+  //  console.log("props", props);
+  
   const [data, setData] = useState();
 
   const handleOnChange = (e) => {
-    // console.log(data)
     setData(data, e.target.value);
   };
 
-   const handleOnDelete =(id) => {
+  // const handleOnDelete = (id) => {
    
-    
-  //     setData(data.id !== data);
-
-  //   // setData(deleteData);
-  //   // console.log(data);
-   };
+  //     deleteExpense(id);
+  //     setData('')
+  // };
 
   const expenseItems = [];
   for (let i = 0; i < props.expenses.length; i++) {
@@ -31,7 +28,7 @@ export default function TableBody(props) {
         <td>{expenseObject.amount}</td>
         <td>
           <button type="delete" 
-           onClick={handleOnDelete(expenseObject.id)}
+          // onClick={handleOnDelete}
           >
             <i className="fa fa-trash" aria-hidden="true"></i>
           </button>

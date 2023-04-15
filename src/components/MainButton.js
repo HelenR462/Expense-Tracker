@@ -1,38 +1,42 @@
 import React, { useState } from "react";
 
-export default function MainButton({ setExpenses, addNewExpense }) {
+export default function MainButton({addNewExpense,}) {
   const [type, setType] = useState("");
   const [date, setDate] = useState(new Date());
   const [item, setItem] = useState("");
   const [amount, setAmount] = useState("");
 
   const handleTypeOnChange = (e) => {
-    setType(type, e.target.value);
+    setType(e.target.value);
 
     console.log(e.target.value);
   };
 
   const handleDateOnChange = (e) => {
-    setDate({ date: new Date() });
+    setDate(e.target.value);
 
     console.log(e.target.value);
   };
 
   const handleItemOnChange = (e) => {
-    setItem(item, e.target.value);
+    setItem(e.target.value);
 
     console.log(e.target.value);
   };
 
   const handleAmountOnChange = (e) => {
-    setAmount(amount, e.target.value);
+    setAmount( e.target.value);
 
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
 
   function handleOnSubmit(e) {
     e.preventDefault();
+    // console.log(amount)
     addNewExpense(type, date, item, amount);
+
+   
+    //  window.location.reload(false)
   }
   //  addNewExpense =(e)=> {
   //      setExpenses(e.target.value)
@@ -77,9 +81,9 @@ export default function MainButton({ setExpenses, addNewExpense }) {
             onChange={handleAmountOnChange}
             className="form-control"
             name="price"
-            type="number"
+            type="currency"
             min="1.00"
-            step="0.050"
+            step="0.00"
             placeholder="$ Price"
             aria-label="Amount"
           />

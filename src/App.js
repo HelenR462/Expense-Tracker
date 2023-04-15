@@ -42,27 +42,32 @@ export default function App() {
 
   const addNewExpense = (type, date, item, amount) => {
     const newExpense = {
-      
       id: Math.random(),
       type: type,
       date: date.toLocaleString(),
       item: item,
-      amount:amount
-   };
+      amount: amount,
+    };
+    //  console.log(newExpense)
     setExpenses([...expenses, newExpense]);
+  };
+
+  const deleteExpense = (id) => {
+    setExpenses(
+      addNewExpense.filter((addNewExpense) => addNewExpense.id !== id)
+    );
   };
 
   return (
     <div>
-      <Header amount={addNewExpense.amount}/>
-      < MainButton addNewExpense={addNewExpense}   />
+      <Header addNewExpense={addNewExpense} />
+      <MainButton addNewExpense={addNewExpense} />
       <Table />
       <TableBody
-         onSubmit={addNewExpense}
-      //  onClick={handleOnDelete}
-       setExpenses={setExpenses}
+        onSubmit={addNewExpense}
+        setExpenses={setExpenses}
         expenses={expenses}
-
+        // deleteExpense={addNewExpense}
       />
 
       {/* {expenseItems} */}
