@@ -9,11 +9,6 @@ export default function TableBody(props) {
     setData(data, e.target.value);
   };
 
-  // const handleOnDelete = (id) => {
-   
-  //     deleteExpense(id);
-  //     setData('')
-  // };
 
   const expenseItems = [];
   for (let i = 0; i < props.expenses.length; i++) {
@@ -28,7 +23,7 @@ export default function TableBody(props) {
         <td>{expenseObject.amount}</td>
         <td>
           <button type="delete" 
-          // onClick={handleOnDelete}
+          onClick={()=>{props.deleteExpense(expenseObject.id)}}
           >
             <i className="fa fa-trash" aria-hidden="true"></i>
           </button>

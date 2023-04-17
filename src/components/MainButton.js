@@ -32,15 +32,12 @@ export default function MainButton({addNewExpense,}) {
 
   function handleOnSubmit(e) {
     e.preventDefault();
-    // console.log(amount)
+     console.log(amount)
     addNewExpense(type, date, item, amount);
 
    
-    //  window.location.reload(false)
   }
-  //  addNewExpense =(e)=> {
-  //      setExpenses(e.target.value)
-  //     };
+ 
 
   return (
     <div>

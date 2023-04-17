@@ -6,6 +6,7 @@ import Table from "./components/Table";
 import TableBody from "./components/TableBody";
 
 export default function App() {
+  const [amount, setAmount] = useState(0);
   const [expenses, setExpenses] = useState([
     {
       id: 0,
@@ -50,27 +51,36 @@ export default function App() {
     };
     //  console.log(newExpense)
     setExpenses([...expenses, newExpense]);
-  };
 
-  const deleteExpense = (id) => {
-    setExpenses(
-      addNewExpense.filter((addNewExpense) => addNewExpense.id !== id)
+    const expenseTotal = () => {
+      expenses.reduce((prev, cur) => {
+        return prev + cur.amount;
+      }, "");
+    };
+    setAmount(expenseTotal);
+
+    const deleteExpense = (id) => {
+      setExpenses(expenses.filter((addNewExpense) => addNewExpense.id !== id));
+    };
+
+    return (
+      <div>
+        <Header
+          addNewExpense={addNewExpense}
+          amount={amount}
+          setAmount={setAmount}
+        />
+        <MainButton addNewExpense={addNewExpense} />
+        <Table />
+        <TableBody
+          addNewExpense={addNewExpense}
+          setExpenses={setExpenses}
+          expenses={expenses}
+          deleteExpense={deleteExpense}
+        />
+
+        {/* {expenseItems} */}
+      </div>
     );
   };
-
-  return (
-    <div>
-      <Header addNewExpense={addNewExpense} />
-      <MainButton addNewExpense={addNewExpense} />
-      <Table />
-      <TableBody
-        onSubmit={addNewExpense}
-        setExpenses={setExpenses}
-        expenses={expenses}
-        // deleteExpense={addNewExpense}
-      />
-
-      {/* {expenseItems} */}
-    </div>
-  );
 }
