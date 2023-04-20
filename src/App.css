@@ -17,119 +17,127 @@
 
 }
 
+.form-box{
+  width: 640px;
+  margin: 30px auto;
+  padding-left: 10px;
 
-/* PAYMENT TYPE */
+}
+
+.top-row{
+  margin-bottom: 1px;
+     padding: 10px;
+    width: 200px;
+    border-radius: 3px;
+    /* border: 0; */
+ 
+
+}
+
+ /* PAYMENT TYPE*/
 .payment{
   display:flex;
-  font-size: 20px;
+  font-size: 25px;
   color:rgb(194, 197, 194) ;
-  align-items:center;
   height:45px;
   width:250px;
   padding:15px;
-  margin-left: 20%;
+  /* margin-left: 20%;  */
   
 }
 
 span{
 font-size: x-large;
 color:rgb(78, 79, 78);
-padding:1px;
-
+padding:3px;
+display:inline-flex
 }
 
-.type{
-  height:40px;
-  width:350px;
-  font-size: 25px;
-  margin: 1px;
+
+/* ITEM */
+ .top-row{
+  display:inline-block;
   align-items:center;
-  padding: 5px;
+  height:55px;
+  width:210px;
+  padding:15px;
+  margin-top: 20px;
   color:rgb(78, 79, 78);
 }
 
-.input{
-  height:40px;
-  width:250px;
-  font-size: 25px;
-}
- 
-/* .top-row{
-    display:flex;
-  align-items:center;
-  
-} */
-
-/* ITEM */
-.top-row{
-  display:inline-flex;
-  align-items:center;
-  height:55px;
-  width:250px;
-  padding:5px;
-  margin-left:250px;
-  margin-top: 20px;
- 
-}
-
-.top-item{
-  margin-left:290px;
-}
-
-input{
-  height:40px;
-  width:200px;
-  font-size: 25px;
-}
 
 /* DATE *//* AMOUNT */
-.btm-row{
+.date{
   display:inline-block;
   align-items:center;
   padding: 5px;
-  margin-top:2%;
-  margin-left: 245px;
-  margin-bottom:20px;
+  margin-top:20px;
+  width: 70px;
+  border-radius: 3px;
+  margin-left: 120px;
   color:rgb(78, 79, 78);
-}
+  height:55px;
+  width:170px;
+  padding:5px;
+} 
 
+.amount{
+  display:inline-block;
+  align-items:center;
+  padding: 5px;
+  margin-top:20px;
+  width: 200px;
+  border-radius: 3px;
+  margin-left: 90px;
+  color:rgb(78, 79, 78);
+ 
+  
+}
 
 /* BUTTON */
 .btn{
   display:flex;
-  margin:0 600px ;
-  font-size:large;
-  background-color:rgb(71, 133, 248);
+  margin-left:275px ;
+  font-size:x-large;
+  background-color:rgb(3, 85, 237);
   border:none;
   border-radius: 6px;
   color:aliceblue;
   padding: 12px;
   margin-bottom: 20px;
+  margin-top: 30px;
+  
 }
 
 .btn:hover {
-  background-color:rgb(39, 108, 245);
+  background-color:rgb(91, 138, 234);
 }
 
 
 /* TABLE */
 
-  .table {
-  background-color:rgb(224, 234, 238);
-  
+.row{
+  color: #272827;
+  background-color:rgb(187,210, 220);
+  font-size: large; 
+   display:inline-flex;
+   width:640%;
+  margin-left: 12px;
+  padding-left: 5%;
+   
 }
 
-.table table-striped{
-  background-color:rgb(42, 96, 42)(187, 210, 220);
-  
-}
 
 
+i{
+  color: rgb(134, 46, 46);
 
-  .fa fa-trash{
-  border-color: transparent;
-  color:transparent 0px solid;
-  display: flex-end;
-  margin-left: 80%;
 } 
 
+.trash{
+ border:transparent
+}
+
+.chart{
+  margin-left: 35%;
+}

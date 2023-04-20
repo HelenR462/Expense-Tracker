@@ -3,26 +3,17 @@ import React from "react";
 export default function Table() {
   return (
     <div>
-      <table className="table">
-
-      <thead>
-    <tr>
-      <th className= "odd" scope="col">Type</th>
-      <th className= "even" scope="col">Date</th>
-      <th className= "odd" scope="col">Item</th>
-      <th className= "even" scope="col">Amount</th>
-      <th></th>
-    </tr>
-
-     </thead>
-
-
-
-
-      
+      <table>
+        <thead>
+          <tr className="row">
+            <th className="col-2">Store</th>
+            <th className="col-2">Type</th>
+            <th className="col-3">Date</th>
+            <th className="col-2">Item</th>
+            <th className="col">Amount</th>
+          </tr>
+        </thead>
       </table>
     </div>
-
-  
   );
 }

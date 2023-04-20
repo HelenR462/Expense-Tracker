@@ -1,31 +1,32 @@
 import React, { useState } from "react";
 
 export default function TableBody(props) {
-  //  console.log("props", props);
-  
   const [data, setData] = useState();
 
   const handleOnChange = (e) => {
     setData(data, e.target.value);
   };
 
-
   const expenseItems = [];
   for (let i = 0; i < props.expenses.length; i++) {
     const expenseObject = props.expenses[i];
-    // add table body to expenseItems array
 
     expenseItems.push(
       <tr key={expenseItems}>
+        <td>{expenseObject.store}</td>
         <td>{expenseObject.type}</td>
         <td>{expenseObject.date}</td>
         <td>{expenseObject.item}</td>
         <td>{expenseObject.amount}</td>
         <td>
-          <button type="delete" 
-          onClick={()=>{props.deleteExpense(expenseObject.id)}}
+          <button
+            className="trash"
+            type="delete"
+            onClick={(e) => {
+              props.deleteExpense(expenseObject.id);
+            }}
           >
-            <i className="fa fa-trash" aria-hidden="true"></i>
+            <i className="fa fa-trash" aria-hidden="false"></i>
           </button>
         </td>
       </tr>
@@ -38,7 +39,7 @@ export default function TableBody(props) {
       value={data}
       onChange={handleOnChange}
     >
-      <tbody>{expenseItems}</tbody>
+      <tbody className="chart">{expenseItems}</tbody>
     </table>
   );
 }

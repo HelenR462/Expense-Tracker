@@ -1,47 +1,72 @@
-import React, { useState } from "react";
+import React, { useState /*useEffect */ } from "react";
 
-export default function MainButton({addNewExpense,}) {
+export default function MainButton({ addNewExpense, expenseItems }) {
   const [type, setType] = useState("");
   const [date, setDate] = useState(new Date());
   const [item, setItem] = useState("");
   const [amount, setAmount] = useState("");
+  const [store, setStore] = useState("");
+
+  //   const [inputValue, setInputValue] = useState(true);
+
+  //   useEffect(() =>{
+  //    const expenseData = window.localStorage.getItem('STORE_EXPENSE_VALUE');
+  //  console.log('expenseData', expenseData )
+  //    if(expenseData !== null) setInputValue(JSON.parse(expenseData))
+  //    }, [])
+
+  // useEffect(() =>{
+  //  window.localStorage.setItem('STORE_EXPENSE_VALUE', JSON.stringify(inputValue))
+  // }, [inputValue])
 
   const handleTypeOnChange = (e) => {
     setType(e.target.value);
-
-    console.log(e.target.value);
   };
 
   const handleDateOnChange = (e) => {
     setDate(e.target.value);
-
-    console.log(e.target.value);
   };
 
   const handleItemOnChange = (e) => {
     setItem(e.target.value);
-
-    console.log(e.target.value);
   };
 
   const handleAmountOnChange = (e) => {
-    setAmount( e.target.value);
+    setAmount(e.target.value);
+  };
 
-    // console.log(e.target.value);
+  // const handleOnClick = (e) => {
+  //   setInputValue(false);
+  // };
+
+  const handleStoreOnChange = (e) => {
+    setStore(e.target.value);
   };
 
   function handleOnSubmit(e) {
     e.preventDefault();
-     console.log(amount)
-    addNewExpense(type, date, item, amount);
-
-   
+    addNewExpense(store, type, date, item, amount);
+    e.target.reset();
   }
- 
 
   return (
     <div>
-      <form onSubmit={handleOnSubmit}>
+      {/* {inputValue &&(
+   <tbody className="chart">{expenseItems}</tbody> 
+  )} */}
+
+      <form className="form-box" onSubmit={handleOnSubmit}>
+        <label className=" top-item top-row">
+          <span> Store:</span>
+          <input
+            className="form-control"
+            onChange={handleStoreOnChange}
+            name="name"
+            placeholder="Store Name"
+            aria-label="store"
+          />
+        </label>
+
         <label className="top-row payment">
           <span>Type:</span>
           <select onChange={handleTypeOnChange} className="type">
@@ -66,13 +91,13 @@ export default function MainButton({addNewExpense,}) {
           />
         </label>
         {/* Date */}
-        <label className=" btm-row">
+        <label className=" date">
           <span>Date:</span>
           <input onChange={handleDateOnChange} type="date" />
         </label>
 
         {/*Amount */}
-        <label className="btm-row">
+        <label className="amount">
           <span>Amount:</span>
           <input
             onChange={handleAmountOnChange}
@@ -88,7 +113,12 @@ export default function MainButton({addNewExpense,}) {
 
         {/* Button */}
         <div className="btn-container">
-          <button className="btn btn-primary btn-lg" type="Submit" onSubmit={handleOnSubmit}>
+          <button
+            className="btn btn-primary btn-lg"
+            type="Submit"
+            // onClick={handleOnClick}
+            onSubmit={handleOnSubmit}
+          >
             Add Expense
           </button>
         </div>
