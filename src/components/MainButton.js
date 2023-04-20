@@ -1,6 +1,6 @@
 import React, { useState /*useEffect */ } from "react";
 
-export default function MainButton({ addNewExpense, expenseItems }) {
+export default function MainButton({ addNewExpense,   /*expenseItems */}) {
   const [type, setType] = useState("");
   const [date, setDate] = useState(new Date());
   const [item, setItem] = useState("");
