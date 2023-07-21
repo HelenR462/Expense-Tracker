@@ -116,18 +116,19 @@ display:inline-flex
 
 /* TABLE */
 
-.row{
-  color: #272827;
-  background-color:rgb(187,210, 220);
-  font-size: large; 
-   display:inline-flex;
-   width:640%;
-  margin-left: 12px;
-  padding-left: 5%;
-   
+.tableContainer{
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
-
+.tableContent,
+.tableHead,
+.tableRow{
+  width: 100%;
+}
 
 i{
   color: rgb(134, 46, 46);

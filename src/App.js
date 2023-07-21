@@ -2,48 +2,54 @@ import React, { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import MainButton from "./components/MainButton";
-import Table from "./components/Table";
 import TableBody from "./components/TableBody";
 
 export default function App() {
   const [totalAmount, setTotalAmount] = useState(0);
+  const [expense, setExpense] = useState({
+    id: Math.random(),
+    store: "",
+    type: "",
+    date: "",
+    item: "",
+    amount: "",
+  });
+
+ 
+
+
   const [expenses, setExpenses] = useState([]);
 
-  const addNewExpense = (store, type, date, item, amount) => {
-    const newExpense = {
+  const addNewExpense = () => {
+    if(Object.values(expense).includes('')) return;
+    setTotalAmount((prev) => prev + Number(expense.amount));
+    setExpenses([...expenses, expense]);
+    setExpense({
       id: Math.random(),
-      store: store,
-      type: type,
-      date: date.toLocaleString(),
-      item: item,
-      amount: amount,
-    };
-
-    setTotalAmount((prev) => prev + Number(amount));
-
-    setExpenses([...expenses, newExpense]);
+      store: "",
+      type: "",
+      date: "",
+      item: "",
+      amount: "",
+    });
   };
 
-  const expenseTotal = expenses.reduce((prev, cur) => {
-    return prev + cur.amount;
-  }, "");
-
-  const deleteExpense = (id) => {
+ 
+  const deleteExpense = (id,amount) => {
+    setTotalAmount((prev) => prev - Number(amount));
     setExpenses(expenses.filter((addNewExpense) => addNewExpense.id !== id));
   };
 
   return (
     <div>
-      <Header
+      <Header totalAmount={totalAmount} />
+      <MainButton
         addNewExpense={addNewExpense}
-        amount={totalAmount}
-        expenseTotal={expenseTotal}
+        expense={expense}
+        setExpense={setExpense}
       />
-      <MainButton addNewExpense={addNewExpense} />
-      <Table />
+
       <TableBody
-        addNewExpense={addNewExpense}
-        setExpenses={setExpenses}
         expenses={expenses}
         deleteExpense={deleteExpense}
       />

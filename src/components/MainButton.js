@@ -1,76 +1,47 @@
-import React, { useState /*useEffect */ } from "react";
+import React from "react";
 
-export default function MainButton({ addNewExpense,   /*expenseItems */}) {
-  const [type, setType] = useState("");
-  const [date, setDate] = useState(new Date());
-  const [item, setItem] = useState("");
-  const [amount, setAmount] = useState("");
-  const [store, setStore] = useState("");
-
-  //   const [inputValue, setInputValue] = useState(true);
-
-  //   useEffect(() =>{
-  //    const expenseData = window.localStorage.getItem('STORE_EXPENSE_VALUE');
-  //  console.log('expenseData', expenseData )
-  //    if(expenseData !== null) setInputValue(JSON.parse(expenseData))
-  //    }, [])
-
-  // useEffect(() =>{
-  //  window.localStorage.setItem('STORE_EXPENSE_VALUE', JSON.stringify(inputValue))
-  // }, [inputValue])
-
-  const handleTypeOnChange = (e) => {
-    setType(e.target.value);
-  };
-
-  const handleDateOnChange = (e) => {
-    setDate(e.target.value);
-  };
-
-  const handleItemOnChange = (e) => {
-    setItem(e.target.value);
-  };
-
-  const handleAmountOnChange = (e) => {
-    setAmount(e.target.value);
-  };
-
-  // const handleOnClick = (e) => {
-  //   setInputValue(false);
-  // };
-
-  const handleStoreOnChange = (e) => {
-    setStore(e.target.value);
+export default function MainButton({ addNewExpense, expense, setExpense }) {
+  const handleOnChange = (e) => {
+    e.preventDefault();
+    setExpense({
+      ...expense,
+      [e.target.id]: e.target.value,
+    });
   };
 
   function handleOnSubmit(e) {
     e.preventDefault();
-    addNewExpense(store, type, date, item, amount);
-    e.target.reset();
+    addNewExpense();
+
   }
+
 
   return (
     <div>
-      {/* {inputValue &&(
-   <tbody className="chart">{expenseItems}</tbody> 
-  )} */}
-
       <form className="form-box" onSubmit={handleOnSubmit}>
         <label className=" top-item top-row">
           <span> Store:</span>
           <input
             className="form-control"
-            onChange={handleStoreOnChange}
+            onChange={handleOnChange}
+            id="store"
             name="name"
             placeholder="Store Name"
             aria-label="store"
+            value={expense.store}
+            required
           />
         </label>
 
         <label className="top-row payment">
           <span>Type:</span>
-          <select onChange={handleTypeOnChange} className="type">
-            <option>Payment</option>
+          <select
+            onChange={handleOnChange}
+            id="type"
+            className="type"
+            value={expense.type}
+          >
+            <option defaultValue="payment">Payment</option>
             <option value="cash">Cash</option>
             <option value="debit">Debit</option>
             <option value="credit card">Credit Card</option>
@@ -79,44 +50,53 @@ export default function MainButton({ addNewExpense,   /*expenseItems */}) {
           </select>
         </label>
 
-        {/* Item */}
         <label className=" top-item top-row">
           <span> Item:</span>
           <input
             className="form-control"
-            onChange={handleItemOnChange}
+            onChange={handleOnChange}
+            id="item"
             name="name"
             placeholder="Description"
             aria-label="item"
+            value={expense.item}
+            required
           />
         </label>
-        {/* Date */}
+
         <label className=" date">
           <span>Date:</span>
-          <input onChange={handleDateOnChange} type="date" />
+          <input
+            onChange={handleOnChange}
+            sortby="ascending"
+            id="date"
+            type="date"
+            value={expense.date}
+            required
+          />
         </label>
 
-        {/*Amount */}
         <label className="amount">
           <span>Amount:</span>
           <input
-            onChange={handleAmountOnChange}
+            onChange={handleOnChange}
+            id="amount"
             className="form-control"
             name="price"
-            type="currency"
-            min="1.00"
-            step="0.00"
+            type="number"
+            min="0.01"
+            step="0.01"
             placeholder="$ Price"
             aria-label="Amount"
+            value={expense.amount}
+            required
           />
         </label>
 
-        {/* Button */}
         <div className="btn-container">
           <button
             className="btn btn-primary btn-lg"
             type="Submit"
-            // onClick={handleOnClick}
             onSubmit={handleOnSubmit}
           >
             Add Expense

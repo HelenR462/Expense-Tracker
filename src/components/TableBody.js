@@ -1,21 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function TableBody(props) {
-  const [data, setData] = useState();
+export default function TableBody({expenses,deleteExpense}) {
 
-  const handleOnChange = (e) => {
-    setData(data, e.target.value);
-  };
-
+  
+  
   const expenseItems = [];
-  for (let i = 0; i < props.expenses.length; i++) {
-    const expenseObject = props.expenses[i];
+  for (let i = 0; i < expenses.length; i++) {
+    const expenseObject =expenses[i];
 
     expenseItems.push(
       <tr key={expenseItems}>
         <td>{expenseObject.store}</td>
         <td>{expenseObject.type}</td>
-        <td>{expenseObject.date}</td>
+        <td >{expenseObject.date}</td>
         <td>{expenseObject.item}</td>
         <td>{expenseObject.amount}</td>
         <td>
@@ -23,7 +20,7 @@ export default function TableBody(props) {
             className="trash"
             type="delete"
             onClick={(e) => {
-              props.deleteExpense(expenseObject.id);
+              deleteExpense(expenseObject.id, expenseObject.amount);
             }}
           >
             <i className="fa fa-trash" aria-hidden="false"></i>
@@ -34,12 +31,21 @@ export default function TableBody(props) {
   }
 
   return (
-    <table
-      className="table table-striped"
-      value={data}
-      onChange={handleOnChange}
-    >
-      <tbody className="chart">{expenseItems}</tbody>
-    </table>
+    <div className="tableContainer">
+      <table className="tableContent">
+        <thead className="tableHead">
+          <tr className="tableRow">
+            <th className="tableCell">Store</th>
+            <th className="tableCell">Type</th>
+            <th className="tableCell">Date</th>
+            <th className="tableCell">Item</th>
+            <th className="tableCell">Amount</th>
+          </tr>
+        </thead>
+        <tbody className="chart">
+          {expenseItems}
+          </tbody>
+      </table>
+    </div>
   );
 }
