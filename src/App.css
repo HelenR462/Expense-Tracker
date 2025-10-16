@@ -4,7 +4,6 @@
  color:#595a59;
 }
 
-/* HEADER */
 
 .header-section{
   padding: 1px;
@@ -17,12 +16,69 @@
 
 }
 
-.form-box{
-  width: 640px;
-  margin: 30px auto;
-  padding-left: 10px;
 
+.form-box {
+  width: 80%;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+  gap: 10px;
+  align-items: center;
 }
+
+.form-box label {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  color: #4e4f4e;
+}
+
+.form-box input,
+.form-box select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.btn-container {
+  grid-column: span 5; 
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+/* TABLE ALIGNMENT FIX */
+.tableContainer {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.tableContent {
+  width: 80%;
+  border-collapse: collapse;
+  text-align: left;
+  border: none;
+}
+
+.tableHead th,
+.tableContent td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+ margin-right: 20px;
+}
+
+.tableHead th {
+  background-color: #f4f4f4;
+}
+
+.chart td:nth-child(5), 
+.tableHead th:nth-child(5) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-family: monospace;
+}
+
 
 .top-row{
   margin-bottom: 1px;
@@ -31,84 +87,16 @@
     border-radius: 3px;
     /* border: 0; */
  
-
-}
-
- /* PAYMENT TYPE*/
-.payment{
-  display:flex;
-  font-size: 25px;
-  color:rgb(194, 197, 194) ;
-  height:45px;
-  width:250px;
-  padding:15px;
-  /* margin-left: 20%;  */
-  
 }
 
 span{
-font-size: x-large;
+font-size: large;
 color:rgb(78, 79, 78);
 padding:3px;
 display:inline-flex
 }
 
-
-/* ITEM */
- .top-row{
-  display:inline-block;
-  align-items:center;
-  height:55px;
-  width:210px;
-  padding:15px;
-  margin-top: 20px;
-  color:rgb(78, 79, 78);
-}
-
-
-/* DATE *//* AMOUNT */
-.date{
-  display:inline-block;
-  align-items:center;
-  padding: 5px;
-  margin-top:20px;
-  width: 70px;
-  border-radius: 3px;
-  margin-left: 120px;
-  color:rgb(78, 79, 78);
-  height:55px;
-  width:170px;
-  padding:5px;
-} 
-
-.amount{
-  display:inline-block;
-  align-items:center;
-  padding: 5px;
-  margin-top:20px;
-  width: 200px;
-  border-radius: 3px;
-  margin-left: 90px;
-  color:rgb(78, 79, 78);
  
-  
-}
-
-/* BUTTON */
-.btn{
-  display:flex;
-  margin-left:275px ;
-  font-size:x-large;
-  background-color:rgb(3, 85, 237);
-  border:none;
-  border-radius: 6px;
-  color:aliceblue;
-  padding: 12px;
-  margin-bottom: 20px;
-  margin-top: 30px;
-  
-}
-
 .btn:hover {
   background-color:rgb(91, 138, 234);
 }
@@ -128,15 +116,39 @@ display:inline-flex
 .tableHead,
 .tableRow{
   width: 100%;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.price  {
+  display: grid;
+  grid-template-columns: auto 2ch; 
+  justify-content: end;
+  text-align: right;
+  white-space: nowrap;
+  padding-right: 0.5rem;
+}
+
+.price .dollars {
+    text-align:right;
+}
+.price .cents {
+   text-align:right;
 }
 
 i{
-  color: rgb(134, 46, 46);
+color:#bdbcbc;
 
+}
+i:hover{
+  color: #888888;
+ 
 } 
 
 .trash{
- border:transparent
+  margin-left: 50px;
+ border:transparent;
+ background-color: transparent;
 }
 
 .chart{

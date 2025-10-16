@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import MainButton from "./components/MainButton";
@@ -15,13 +15,19 @@ export default function App() {
     amount: "",
   });
 
- 
-
-
   const [expenses, setExpenses] = useState([]);
 
+  useEffect(() => {
+    const savedExpense = JSON.parse(localStorage.getItem("expense"));
+    if (savedExpense) setExpense(savedExpense);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("expense", JSON.stringify(expense));
+  }, [expense]);
+
   const addNewExpense = () => {
-    if(Object.values(expense).includes('')) return;
+    if (Object.values(expense).includes("")) return;
     setTotalAmount((prev) => prev + Number(expense.amount));
     setExpenses([...expenses, expense]);
     setExpense({
@@ -34,8 +40,7 @@ export default function App() {
     });
   };
 
- 
-  const deleteExpense = (id,amount) => {
+  const deleteExpense = (id, amount) => {
     setTotalAmount((prev) => prev - Number(amount));
     setExpenses(expenses.filter((addNewExpense) => addNewExpense.id !== id));
   };
@@ -49,10 +54,7 @@ export default function App() {
         setExpense={setExpense}
       />
 
-      <TableBody
-        expenses={expenses}
-        deleteExpense={deleteExpense}
-      />
+      <TableBody expenses={expenses} deleteExpense={deleteExpense} />
     </div>
   );
 }
